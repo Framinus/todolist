@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+const addTask = require('./commands/add.js');
+const listTask = require('./commands/list.js');
+const completeTask = require('./commands/complete.js');
+const deleteTask = require('./commands/delete.js');
+
+const command = process.argv[2];
+// pulls the arguments i need off the command line to add a task and converts into string.
+const args = process.argv.slice(3).join(' ');
+// takes the number i need after the 'delete' or 'complete' command.
+const index = process.argv[3];
+
+try {
+  switch (command) {
+    case 'add':
+      addTask(args);
+      break;
+    case 'list':
+      listTask();
+      break;
+    case 'complete':
+      completeTask(index);
+      break;
+    case 'delete':
+      deleteTask(index);
+      break;
+    default:
+      console.log('whatever');
+  }
+} catch (e) {
+  console.error(e.message);
+  console.error('Please enter a valid command: add, list, complete or delete.');
+}
+
+
+// module.exports = readFile;
