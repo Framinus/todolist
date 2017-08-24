@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Command Line Todo List App",
   "main": "tasks.js",
-  "bin": {
-    "tasks": "./tasks"
-  },
   "directories": {
     "test": "test"
   },
