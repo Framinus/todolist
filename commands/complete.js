@@ -6,7 +6,7 @@ function completeTask(taskID) {
   let index = 0;
   let i = 0;
   while (i < taskObj.tasks.length) {
-    if (taskObj.tasks[i].id != taskID) {
+    if (taskObj.tasks[i].id !== taskID) {
       i += 1;
     } else {
       index = i;

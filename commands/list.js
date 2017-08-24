@@ -1,4 +1,5 @@
 const readFile = require('./../readfile.js');
+const writeFile = require('./../writefile.js');
 
 // this function reads the json file, parses it, and prints it to the terminal.
 

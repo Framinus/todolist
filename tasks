@@ -8,7 +8,7 @@ const command = process.argv[2];
 // pulls the arguments i need off the command line to add a task and converts into string.
 const args = process.argv.slice(3).join(' ');
 // takes the number i need after the 'delete' or 'complete' command.
-const index = process.argv[3];
+const index = Number(process.argv[3]);
 
 try {
   switch (command) {
@@ -25,12 +25,9 @@ try {
       deleteTask(index);
       break;
     default:
-      console.log('whatever');
+      throw new Error();
   }
 } catch (e) {
   console.error(e.message);
   console.error('Please enter a valid command: add, list, complete or delete.');
 }
-
-
-// module.exports = readFile;
