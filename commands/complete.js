@@ -18,7 +18,7 @@ function completeTask(taskID) {
       }
     }
   } catch (e) {
-    console.error('did not enter a valid ID number');
+    console.error(e.message);
   }
   console.log(`Completed task ${taskID}: ${taskObj.tasks[index].task}`);
   taskObj.tasks.splice(index, 1);
