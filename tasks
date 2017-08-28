@@ -3,6 +3,8 @@ const addTask = require('./commands/addTask.js');
 const listTask = require('./commands/listTask.js');
 const completeTask = require('./commands/completeTask.js');
 const deleteTask = require('./commands/deleteTask.js');
+const readFile = require('./readfile.js');
+const writeFile = require('./writefile.js');
 
 const command = process.argv[2];
 // pulls the arguments i need off the command line to add a task and converts into string.
@@ -11,6 +13,17 @@ const args = process.argv.slice(3).join(' ');
 const index = Number(process.argv[3]);
 
 const commandArray = ['add', 'list', 'complete', 'delete', 'list'];
+
+const initialObj = {
+  idCount: 0,
+  tasks: [],
+};
+
+try {
+  readFile();
+} catch (e) {
+  writeFile(initialObj);
+}
 
 try {
   switch (command) {
