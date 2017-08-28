@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-const addTask = require('./commands/add.js');
-const listTask = require('./commands/list.js');
-const completeTask = require('./commands/complete.js');
-const deleteTask = require('./commands/delete.js');
+const addTask = require('./commands/addTask.js');
+const listTask = require('./commands/listTask.js');
+const completeTask = require('./commands/completeTask.js');
+const deleteTask = require('./commands/deleteTask.js');
 
 const command = process.argv[2];
 // pulls the arguments i need off the command line to add a task and converts into string.
