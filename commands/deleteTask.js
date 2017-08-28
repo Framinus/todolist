@@ -1,5 +1,6 @@
 const readFile = require('./../readfile.js');
 const writeFile = require('./../writefile.js');
+const clearcount = require('./../clearcount.js');
 
 function deleteTask(taskID) {
   const taskObj = readFile();
@@ -22,6 +23,9 @@ function deleteTask(taskID) {
   }
   console.log(`Deleted task ${taskID}: ${taskObj.tasks[index].task}`);
   taskObj.tasks.splice(index, 1);
+  if (taskObj.tasks.length === 0) {
+    clearcount();
+  }
   writeFile(taskObj);
 }
 

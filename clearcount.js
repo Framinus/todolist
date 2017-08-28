@@ -1,4 +1,10 @@
-readFile = require('./readfile.js');
+const readFile = require('./readfile.js');
+const writeFile = require('./writefile.js');
 
-// if the length of the tasks array becomes 0, reset the countID.
-const task
+function clearcount() {
+  const taskObj = readFile();
+  taskObj.idCount = 0;
+  writeFile(taskObj);
+}
+
+module.exports = clearcount;
