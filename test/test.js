@@ -38,7 +38,7 @@ describe('addTask()', () => {
     // if readFile() is run and cannot access tasks.json, add.js
     // should write a file and create the object. how to test this without
     // deleting the tasks.json? can you delete a file from a program?
-  })
+  });
 });
 
 // things we want to test from delete.js:
@@ -55,7 +55,13 @@ describe('deleteTask()', () => {
       expect(taskObj.tasks[i].id).to.not.equal(1);
     }
   });
+  it('should throw an error if passed invalid arguments', () => {
+    expect(deleteTask).to.throw('Please enter a valid ID number');
+  });
+  it('should throw if a string is passed in', () => {
+  });
 });
+
 
 // if I pass deleteTask a string, it should throw an error.
 // if I pass deleteTask an object, it should throw an error.
@@ -73,9 +79,10 @@ describe('completeTask', () => {
       expect(taskObj.tasks[i].id).to.not.equal(1);
     }
   });
-  it('should fail if passed a string as an argument', () => {
-    expect(completeTask).to.throw('words!');
-  })
+  it('should throw an error if passed invalid arguments', () => {
+    expect(completeTask).to.throw('Please enter a valid ID number');
+  });
+  it()
 });
 
 describe('listTasks()', () => {
