@@ -38,6 +38,9 @@ describe('addTask()', () => {
     // if readFile() is run and cannot access tasks.json, add.js
     // should write a file and create the object. how to test this without
     // deleting the tasks.json? can you delete a file from a program?
+    // use fs.unlinkSync to delete the tasks.json file (or a test file)
+    // use 'context' to set the state of the world - ie: when tasks.json exists
+    // and when it does not exist.
   });
 });
 
