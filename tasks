@@ -36,4 +36,7 @@ fs.readFile('./tasks.json', 'utf-8', (err, data) => {
       throw new Error('Invalid command!');
     }
   }
+  fs.writeFile('./tasks.json', JSON.stringify(data), (error) => {
+    console.log("cannot write");
+  });
 });
