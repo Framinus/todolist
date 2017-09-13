@@ -11,32 +11,32 @@ const command = process.argv[2];
 const arg = process.argv[3];
 
 const defaultData = [];
-
+let results;
 // then I want to create my fs.readFile method.
-fs.readFile('./tasks.json', 'utf-8', (err, data) => {
+fs.readFile('./tasks.JSON', 'utf-8', (err, data) => {
   data = err ? defaultData : JSON.parse(data);
   switch (command) {
     case 'add': {
-      add(data, arg);
+      results = add(data, arg);
       break;
     }
     case 'complete': {
-      complete(data, arg);
+      results = complete(data, arg);
       break;
     }
     case 'delete': {
-      del(data, arg);
+      results = del(data, arg);
       break;
     }
     case 'list': {
-      list(data);
+      results = list(data);
       break;
     }
     default: {
       throw new Error('Invalid command!');
     }
   }
-  fs.writeFile('./tasks.json', JSON.stringify(data), (error) => {
-    console.log("cannot write");
+  fs.writeFile('./tasks.json', JSON.stringify(results), (error) => {
+    if (error) throw new Error("Whaaaat???");
   });
 });
