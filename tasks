@@ -1,40 +1,39 @@
 #!/usr/bin/env node
-const addTask = require('./commands/addTask.js');
-const listTask = require('./commands/listTask.js');
-const completeTask = require('./commands/completeTask.js');
-const deleteTask = require('./commands/deleteTask.js');
-const initialize = require('./initialize.js');
 
+// first i want to create and require the add, list, complete and delete files.
+const fs = require('fs');
+const add = require('./commands/add.js');
+const complete = require('./commands/complete.js');
+const del = require('./commands/delete.js');
+const list = require('./commands/list.js');
+// then I want to create my variables from my command line arguments.
 const command = process.argv[2];
-// pulls the arguments i need off the command line to add a task and converts into string.
-const args = process.argv.slice(3).join(' ');
-// takes the number i need after the 'delete' or 'complete' command.
-const index = Number(process.argv[3]);
+const arg = process.argv[3];
 
-initialize();
+const defaultData = [];
 
-const commandArray = ['add', 'list', 'complete', 'delete', 'list'];
-
-try {
+// then I want to create my fs.readFile method.
+fs.readFile('./tasks.json', 'utf-8', (err, data) => {
+  data = err ? defaultData : JSON.parse(data);
   switch (command) {
-    case 'add':
-      addTask(args);
+    case 'add': {
+      add(data, arg);
       break;
-    case 'list':
-      listTask();
+    }
+    case 'complete': {
+      complete(data, arg);
       break;
-    case 'complete':
-      completeTask(index);
+    }
+    case 'delete': {
+      del(data, arg);
       break;
-    case 'delete':
-      deleteTask(index);
+    }
+    case 'list': {
+      list(data);
       break;
-    default:
-      throw new Error();
+    }
+    default: {
+      throw new Error('Invalid command!');
+    }
   }
-} catch (e) {
-  console.error(e.message);
-}
-if (!commandArray.includes(command)) {
-  console.error('Please enter a valid command: add, list, complete, or delete');
-}
+});
