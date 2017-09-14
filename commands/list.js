@@ -1,8 +1,11 @@
 const list = function (data) {
-  console.log(`\nID   Description`);
+  console.log(`\nID  Description`);
   console.log(`----------------`);
-  console.log(`${data.id}   ${data.description}\n`);
-  console.log(`You have ${data.length} tasks`);
-  // adding this comment to get git to recognize a change. 
+  data.forEach((task) => {
+    console.log(`${task.id}   ${task.description}`);
+  });
+  console.log(`\nYou have ${data.length} tasks\n`);
+  return data;
 };
+
 module.exports = list;
