@@ -1,5 +1,5 @@
 const del = function (data, arg) {
-  // some stuff
+  // stuff here
 };
 
 module.exports = del;
